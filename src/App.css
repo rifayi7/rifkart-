@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
+
+@theme {
+  --color-tiddy-gray: #576471;
+  --color-tiddy-black: #212529;
+}
+* {
+  font-family: "Alexandria", sans-serif;
+
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  margin-inline: 5%;
+}
