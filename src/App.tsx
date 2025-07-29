@@ -8,6 +8,7 @@ import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
 import Signup from "./components/Signup";
 import AddressPage from "./components/AddressPage";
+import CheckoutPage from "./components/CheckoutPage";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/address" element={<AddressPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
         </Routes>
       </Router>
     </>
