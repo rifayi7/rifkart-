@@ -13,5 +13,6 @@
 body {
   margin: 0;
   padding: 0;
-  margin-inline: 5%;
+  max-width: 1400px;
+  margin-inline: max(5%, calc((100vw - 1400px) / 2));
 }

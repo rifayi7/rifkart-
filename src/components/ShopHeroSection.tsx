@@ -6,7 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 export default function ShopHeroSection() {
   return (
     <div className="w-full flex h-[500px] gap-5 text-tiddy-black">
-      <div className="[30%] h-full overflow-hidden rounded-2xl relative group ">
+      <div className="w-[30%] h-full overflow-hidden rounded-2xl relative group ">
         <div className="absolute  flex flex-col inset-0 justify-between   bg-transparent m-10 z-2">
           <div className="flex justify-between items-center">
             <span className="px-4 py-3  bg-white rounded-2xl">Collections</span>
@@ -24,7 +24,7 @@ export default function ShopHeroSection() {
           className="rounded-2xl w-full h-full object-cover scale-100  group-hover:scale-110 z-1"
         />
       </div>
-      <div className="[25%] h-full overflow-hidden rounded-2xl relative group">
+      <div className="w-[25%] h-full overflow-hidden rounded-2xl relative group">
         <div className="absolute  flex flex-col inset-0 justify-between   bg-transparent m-10 z-2">
           <div className="flex justify-between items-center">
             <span className="px-4 py-3  bg-white rounded-2xl">Collections</span>
@@ -42,7 +42,7 @@ export default function ShopHeroSection() {
           className="rounded-2xl w-full h-full object-cover group-hover:scale-110 z-1"
         />
       </div>
-      <div className="[45%] h-full overflow-hidden rounded-2xl relative group">
+      <div className="w-[45%] h-full overflow-hidden rounded-2xl relative group">
         <div className="absolute  flex flex-col inset-0 justify-between   bg-transparent m-10 z-2">
           <div className="flex justify-between items-center">
             <span className="px-4 py-3  bg-white rounded-2xl">Collections</span>

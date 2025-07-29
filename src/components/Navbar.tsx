@@ -47,12 +47,12 @@ export default function Navbar() {
           </a>
         </li>
         <li className="hover:text-amber-300">
-          <a href="#" className="inline-flex gap-2">
+          <Link to="cart" className="inline-flex gap-2">
             <span>
               <ShoppingBag />
             </span>
             $0.00
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
