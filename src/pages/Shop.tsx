@@ -3,18 +3,22 @@ import BlackContainer from "../components/BlackContainer";
 import ProductSection from "../components/ProductSection";
 import ShopHeroSection from "../components/ShopHeroSection";
 import { useEffect, useState } from "react";
+import { useAuth } from "../context/ProtectPage";
 
 export default function Shop() {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [ready, setReady] = useState<boolean>(false);
   const navigate = useNavigate();
+  const { isAuth, loading } = useAuth();
   useEffect(() => {
-    if (!localStorage.getItem("username")) {
-      navigate("/signup");
-    } else {
-      setLoading(true);
+    console.log(isAuth);
+    if (!isAuth) {
+      if (!loading) {
+        navigate("/signup");
+      }
     }
-  }, []);
-  if (!loading) return <h1 className="text-6xl">Loading.......</h1>;
+    setReady(true);
+  }, [isAuth, loading]);
+  if (!ready) return <h1 className="text-6xl">Loading.......</h1>;
   return (
     <>
       <ShopHeroSection />
