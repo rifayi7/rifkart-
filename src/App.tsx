@@ -10,13 +10,21 @@ import Signup from "./components/Signup";
 import AddressPage from "./components/AddressPage";
 import CheckoutPage from "./components/CheckoutPage";
 import { AuthProvider } from "./context/ProtectPage";
+import ProductShowTest from "./components/ProductShowTest";
+import { Provider } from "react-redux";
+import { store } from "./redux/store/store";
+import ProductList from "./components/ProductList";
 
 export default function App() {
   return (
     <>
       <Router>
-        {/* <Navbar /> */}
         <AuthProvider>
+          <Navbar />
+          {/* <ProductShowTest /> */}
+          <Provider store={store}>
+            <ProductList />
+          </Provider>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />

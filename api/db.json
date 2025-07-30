@@ -1,21 +1,46 @@
 {
-    "products": [
-      {
-        "id": 1,
-        "name": "Wireless Earbuds",
-        "price": 49.99,
-        "quantity": 100,
-        "image": "https://via.placeholder.com/150"
-      },
-      {
-        "id": 2,
-        "name": "Gaming Mouse",
-        "price": 25.99,
-        "quantity": 60,
-        "image": "https://via.placeholder.com/150"
-      }
-    ],
-    "users": [],
-    "cart": []
-  }
-  
+  "products": [
+    {
+      "id": 1,
+      "name": "Classic T-Shirt",
+      "brand": "Rifwear",
+      "category": "Clothing",
+      "price": 499,
+      "color": "Blue",
+      "quantity": 1,
+      "stock": 25,
+      "size": ["S", "M", "L", "XL"],
+      "description": "A soft cotton t-shirt with a classic fit and minimalist design.",
+      "image": "products-images/1.webp",
+      "newAdded": true
+    },
+    {
+      "id": 2,
+      "name": "Running Shoes",
+      "brand": "Rifstep",
+      "category": "Footwear",
+      "price": 1999,
+      "color": "Black",
+      "quantity": 1,
+      "stock": 40,
+      "size": ["7", "8", "9", "10"],
+      "description": "Lightweight and breathable running shoes with comfortable cushioning.",
+      "image": "products-images/2.webp",
+      "newAdded": false
+    },
+    {
+      "id": 3,
+      "name": "Denim Jacket",
+      "brand": "Rifstyle",
+      "category": "Outerwear",
+      "price": 1499,
+      "color": "Denim Blue",
+      "quantity": 1,
+      "stock": 15,
+      "size": ["M", "L", "XL"],
+      "description": "Trendy denim jacket with a modern cut and durable stitching.",
+      "image": "products-images/3.webp",
+      "newAdded": true
+    }
+  ]
+}

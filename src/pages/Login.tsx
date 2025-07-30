@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/ProtectPage";
+import type { FormEvent } from "react";
 
 export default function Login() {
+  // const { login } = useAuth();
+  // const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   const formData = new FormData(e.currentTarget);
+  //   const name = formData.get("name") as string;
+  //   const password = formData.get("password") as string;
+  //   login(name, password);
+  // };
   return (
     <div className="w-full min-h-screen flex items-center justify-center bg-gray-50">
       <div className="bg-white w-full sm:w-[90%] md:w-[70%] lg:w-[50%] xl:w-[40%] p-10 rounded-2xl shadow-md border border-neutral-200">
@@ -11,12 +21,15 @@ export default function Login() {
           <h1 className="text-4xl font-bold text-gray-800">Welcome Back</h1>
         </div>
 
-        <form className="flex flex-col gap-5">
+        <form
+          //  onSubmit={handleSubmit}
+          className="flex flex-col gap-5"
+        >
           <input
             className="rounded-md border border-neutral-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-            type="email"
-            name="email"
-            placeholder="Email address"
+            type="name"
+            name="name"
+            placeholder="User name"
           />
           <input
             className="rounded-md border border-neutral-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"

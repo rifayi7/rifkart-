@@ -1,7 +1,9 @@
-import { User, Shuffle, Heart, ShoppingBag } from "lucide-react";
+import { User, Shuffle, Heart, ShoppingBag, LogOut } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
+import { useAuth } from "../context/ProtectPage";
 
 export default function Navbar() {
+  const { isAuth, logout } = useAuth();
   return (
     <nav className="flex justify-between items-center">
       <ul className="left flex gap-5">
@@ -23,12 +25,21 @@ export default function Navbar() {
       </ul>
       <ul className="right flex gap-2">
         <li className="hover:text-amber-300 ">
-          <NavLink to="/login" className="inline-flex gap-2">
-            <span>
-              <User />
-            </span>
-            LOGIN
-          </NavLink>
+          {!isAuth ? (
+            <NavLink to="/login" className="inline-flex gap-2">
+              <span>
+                <User />
+              </span>
+              LOGIN
+            </NavLink>
+          ) : (
+            <button onClick={logout} className="inline-flex gap-2">
+              <span>
+                <LogOut />
+              </span>
+              LOGOUT
+            </button>
+          )}
         </li>
         <li className="hover:text-amber-300">
           <a href="#" className="inline-flex gap-2">

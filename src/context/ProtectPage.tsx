@@ -9,6 +9,8 @@ import {
 type AuthContextType = {
   isAuth: boolean;
   loading: boolean;
+  logout: () => void;
+  signup: (username: string, password: string) => void;
 };
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -23,8 +25,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setLoading(false);
   }, []);
 
+  //signup function
+
+  const signup = (username: string, password: string) => {
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
+  };
+
+  //logout function
+
+  const logout = () => {
+    localStorage.removeItem("username");
+    setIsAuth(false);
+  };
+
   return (
-    <AuthContext.Provider value={{ isAuth, loading }}>
+    <AuthContext.Provider value={{ isAuth, loading, logout, signup }}>
       {children}
     </AuthContext.Provider>
   );

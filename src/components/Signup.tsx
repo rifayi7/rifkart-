@@ -1,6 +1,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { useFormState } from "react-dom";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/ProtectPage";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -10,14 +11,14 @@ export default function Signup() {
   const [message, setMessage] = useState<{ message?: string; status?: string }>(
     {}
   );
+  const { signup } = useAuth();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (name === "admin" && password === "admin") {
-      localStorage.setItem("username", name);
-      localStorage.setItem("password", password);
+      signup(name, password);
       setMessage({ message: "login successful", status: "success" });
-      navigate("/");
+      navigate("/login");
     } else {
       setMessage({ message: "login failed", status: "error" });
     }
