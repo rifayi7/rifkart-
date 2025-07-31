@@ -1,28 +1,35 @@
-import { useNavigate } from "react-router-dom";
-import BlackContainer from "../components/BlackContainer";
-import ProductSection from "../components/ProductSection";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../redux/slice/productSlice";
+import type { AppDispatch, RootState } from "../redux/store/store";
+import type { ProductType } from "../redux/slice/productSlice";
+
 import ShopHeroSection from "../components/ShopHeroSection";
-import { useEffect, useState } from "react";
-import { useAuth } from "../context/ProtectPage";
+import ProductSection from "../components/ProductSection";
+import BlackContainer from "../components/BlackContainer";
 
 export default function Shop() {
-  const [ready, setReady] = useState<boolean>(false);
-  const navigate = useNavigate();
-  const { isAuth, loading } = useAuth();
+  const dispatch = useDispatch<AppDispatch>();
+  const { items, loading, error } = useSelector(
+    (state: RootState) => state.products
+  );
+
   useEffect(() => {
-    console.log(isAuth);
-    if (!isAuth) {
-      if (!loading) {
-        navigate("/signup");
-      }
-    }
-    setReady(true);
-  }, [isAuth, loading]);
-  if (!ready) return <h1 className="text-6xl">Loading.......</h1>;
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  if (loading) {
+    return <h1 className="text-6xl">Loading.......</h1>;
+  }
+
+  if (error) {
+    return <h1 className="text-4xl text-red-500">Error: {error}</h1>;
+  }
+
   return (
     <>
       <ShopHeroSection />
-      <ProductSection />
+      <ProductSection products={items} />
       <BlackContainer />
     </>
   );

@@ -22,18 +22,18 @@ export default function App() {
         <AuthProvider>
           <Navbar />
           {/* <ProductShowTest /> */}
+          {/* {<ProductList />} */}
           <Provider store={store}>
-            <ProductList />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/address" element={<AddressPage />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
+            </Routes>
           </Provider>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/address" element={<AddressPage />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
-          </Routes>
         </AuthProvider>
       </Router>
     </>
