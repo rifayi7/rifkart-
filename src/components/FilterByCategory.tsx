@@ -8,6 +8,8 @@
 //     { name: "T-shirts", count: 5 },
 //   ];
 
+import { useEffect } from "react";
+
 //   return (
 //     <div className=" flex flex-col gap-4 text-gray-700 font-light">
 //       <h1 className="font-bold text-black">Filter by category</h1>
@@ -36,16 +38,13 @@
 //   );
 // }
 
-export default function FilterByCategory() {
+export default function FilterByCategory({ categoryFilter, products }: any) {
   const categoryName = [
-    { name: "Toys & Games", count: 5 },
-    { name: "Dresses", count: 6 },
-    { name: "Hats & Scarfs", count: 6 },
-    { name: "Shoes & Socks", count: 6 },
-    { name: "Sweaters", count: 7 },
-    { name: "T-shirts", count: 5 },
+    { name: "Clothing", count: 9 },
+    { name: "Accessories", count: 2 },
+    { name: "Toys", count: 5 },
+    { name: "Footwear", count: 1 },
   ];
-
   return (
     <div className="flex flex-col gap-4 text-gray-700 font-light">
       <h1 className="font-bold text-black">Filter by category</h1>
@@ -56,6 +55,7 @@ export default function FilterByCategory() {
         >
           <div className="flex items-center gap-3">
             <input
+              onClick={() => categoryFilter(category.name)}
               type="checkbox"
               className="h-4 w-4 rounded-sm border-gray-300 accent-amber-300"
             />

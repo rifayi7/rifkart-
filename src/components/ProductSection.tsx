@@ -8,56 +8,97 @@ type ProductSectionType = {
 };
 
 export default function ProductSection({ products }: ProductSectionType) {
-  const [productPages, setProductPages] = useState<number>(0);
-  useEffect(() => {
-    // console.log(products.length);
-    // const pageModulus = products.length % 12;
-    // const pageDivision = products.length / 12;
-    // if (pageModulus === 0) {
-    //   setProductPages(pageDivision);
-    // } else {
-    //   setProductPages(Math.floor(pageDivision) + 1);
-    // }
-    const pageNum = products.length / 12;
-    setProductPages(Math.floor(pageNum) + 1);
-  });
+  const [showingProductItems, setShowingProductItems] =
+    useState<ProductType[]>(products);
+  const [displayItems, setDisplayItems] = useState<ProductType[]>([]);
+  const [itemFiltered, setItemFiltered] = useState<ProductType[]>([]);
+  const [pagenUm, setPageNum] = useState<number>(0);
 
-  const [startIndex, setSatrtIndex] = useState(0);
-  const [endIndex, setEndIndex] = useState(9);
-  const showingPageNum = products.slice(startIndex, endIndex);
+  const productsPerPage = 9;
 
-  const handleIndexPage = (pageNum: number) => {
-    if (pageNum > 1) {
-      setSatrtIndex((pageNum - 1) * 9 + 1);
-      setEndIndex(pageNum * 9);
-      console.log("triggered");
-    } else {
-      setSatrtIndex(0);
-      setEndIndex(9);
-      console.log("triggered2");
+  const handlePageChange = (value: number) => {
+    // 0 9    1
+    // 10 18     2  2-1 *9 +1
+    // 19 27      3   3-1 *9 +1
+    console.log("value is " + value);
+    if (value > 1) {
+      console.log("in 0");
+
+      const last = productsPerPage * value;
+      const start = (value - 1) * productsPerPage;
+      const sliced = showingProductItems.slice(start, last);
+      setDisplayItems(sliced);
     }
+    if (value === 1) {
+      console.log("in 1");
+      const sliced = showingProductItems.slice(0, productsPerPage);
+      setDisplayItems(sliced);
+    }
+  };
+
+  useEffect(() => {
+    console.log("current showing item" + showingProductItems);
+    const totalPageNum = Math.ceil(
+      showingProductItems.length / productsPerPage
+    );
+    setPageNum(totalPageNum);
+    const sliced = showingProductItems.slice(0, productsPerPage);
+    setDisplayItems(sliced);
+  }, [showingProductItems]);
+
+  //category filter
+  const categoryFilter = (category: string) => {
+    const filtered = products.filter((c) => c.category === category);
+
+    if (itemFiltered.length === 0) {
+      setShowingProductItems(filtered);
+      setItemFiltered(filtered);
+      console.log("0 ");
+    } else {
+      console.log("not 0 ");
+      const isalreadyIn = itemFiltered.some((c) => c.category === category);
+      if (isalreadyIn) {
+        const newFilter = itemFiltered.filter((c) => c.category !== category);
+        setShowingProductItems(newFilter);
+        setItemFiltered(newFilter);
+        console.log("same item ");
+        if (newFilter.length === 0) {
+          console.log("prevetn empty");
+          setShowingProductItems(products);
+        }
+      } else {
+        console.log("another item");
+        const finalFilter = products.filter((c) => c.category === category);
+        setShowingProductItems((prev) => [...prev, ...finalFilter]);
+        setItemFiltered((prev) => [...prev, ...finalFilter]);
+      }
+    }
+  };
+  //color filter
+  const colorFilter = (color: string) => {
+    const filteredProducts = products.filter(
+      (product) => product.color === color
+    );
+    setShowingProductItems(filteredProducts);
+    console.log("color filter triggered");
   };
 
   return (
     <div className="flex w-full">
       {/* Left Product Area */}
-      <div className="left w-full md:max-w-[70%] bg-white m-[.5%]">
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
-          {Array.from(showingPageNum, (products, index) => (
-            <ProductCard key={products.id || index} product={products} />
-          ))}
-          {/* {products.map((product, index) => (
-            <ProductCard key={product.id || index} product={product} />
-          ))} */}
+      <div className="left w-full md:max-w-[70%] bg-white m-[.5%] flex flex-col justify-between">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 ">
+          {displayItems &&
+            Array.from(displayItems, (products, index) => (
+              <ProductCard key={products.id || index} product={products} />
+            ))}
         </div>
-
-        {/* Pagination Button */}
-        <div className="flex justify-center mt-6 gap-6">
-          {productPages !== 0 ? (
-            Array.from({ length: productPages }, (_, i) => (
+        <div className="flex justify-center items-center gap-6 h-[10%] ">
+          {pagenUm !== 0 ? (
+            Array.from({ length: pagenUm }, (_, i) => (
               <button
                 key={i}
-                onClick={() => handleIndexPage(i + 1)}
+                onClick={() => handlePageChange(i + 1)}
                 className="bg-[#FDB016] w-9 h-9 text-white rounded mx-1 cursor-pointer"
               >
                 {i + 1}
@@ -73,7 +114,7 @@ export default function ProductSection({ products }: ProductSectionType) {
 
       {/* Right Filter Area */}
       <div className="right w-[30%] md:block hidden p-8">
-        <Filter />
+        <Filter colorFilter={colorFilter} categoryFilter={categoryFilter} />
       </div>
     </div>
   );
