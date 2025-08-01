@@ -1,27 +1,24 @@
-export default function FilterByPrice() {
+import { useState } from "react";
+
+export default function FilterByPrice({ priceFilter }: any) {
   return (
     <div className="w-full max-w-md mx-auto p-4">
       <h2 className="font-bold text-lg mb-4">Filter by price</h2>
-
-      <div className="relative mb-4 h-8">
+      {/* <h1 className="p-10"> {value}</h1> */}
+      <div className="relative rounded-2xl w-full h-1 bg-gray-400">
         <input
           type="range"
-          min="0"
-          max="100"
-          className="absolute w-full h-2 bg-transparent appearance-none pointer-events-auto z-10"
+          className="absolute  slider appearance-none w-full h-full  accent-amber-300"
+          step={100}
+          min={100}
+          max={1000}
+          onChange={(e) => priceFilter(Number(e.target.value))}
         />
-        <input
-          type="range"
-          min="0"
-          max="100"
-          className="absolute w-full h-2 bg-transparent appearance-none pointer-events-auto z-10"
-        />
-        <div className="h-2 bg-yellow-400 rounded-full absolute top-1/2 -translate-y-1/2 w-full z-0"></div>
       </div>
 
       <p className="text-gray-600 font-medium">
-        Price: <span className="text-black font-bold">$15</span> -
-        <span className="text-black font-bold">$50</span>
+        Price: <span className="text-black font-bold">$0</span> -
+        <span className="text-black font-bold">$1000</span>
       </p>
     </div>
   );

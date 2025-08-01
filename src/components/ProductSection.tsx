@@ -45,6 +45,13 @@ export default function ProductSection({ products }: ProductSectionType) {
     setDisplayItems(sliced);
   }, [showingProductItems]);
 
+  //price filter
+  const priceFilter = (price: number) => {
+    console.log("triggered");
+    const priceFiltered = products.filter((p) => p.price <= price);
+    setShowingProductItems(priceFiltered);
+  };
+
   //category filter
   const categoryFilter = (category: string) => {
     const filtered = products.filter((c) => c.category === category);
@@ -116,6 +123,7 @@ export default function ProductSection({ products }: ProductSectionType) {
           colorFilter={colorFilter}
           categoryFilter={categoryFilter}
           products={products}
+          priceFilter={priceFilter}
         />
       </div>
     </div>

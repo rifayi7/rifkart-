@@ -4,10 +4,15 @@ import BestSelling from "../components/BestSelling";
 import OfferBanner from "../components/OfferBanner";
 import FilterByPrice from "../components/FilterByPrice";
 
-export default function Filter({ colorFilter, categoryFilter, products }: any) {
+export default function Filter({
+  colorFilter,
+  categoryFilter,
+  products,
+  priceFilter,
+}: any) {
   return (
     <div className="mx-[1%]">
-      <FilterByPrice />
+      <FilterByPrice priceFilter={priceFilter} />
       <FilterByColour colorFilter={colorFilter} products={products} />
       <FilterByCategory categoryFilter={categoryFilter} />
       <BestSelling />

@@ -52,7 +52,6 @@ export default function FilterByColour({ colorFilter, products }: any) {
     White: { bg: "bg-gray-200" },
     Yellow: { bg: "bg-yellow-300" },
     Purple: { bg: "bg-purple-300" },
-    // fallback colors will use gra
   };
 
   useEffect(() => {
