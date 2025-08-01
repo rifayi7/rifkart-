@@ -279,6 +279,20 @@
       "description": "Chunky knit cable sweater for a warm winter.",
       "image": "product-images/17.webp",
       "newAdded": false
+    },
+    {
+      "id": 21,
+      "name": "21Orange Cable Sweater",
+      "brand": "Rifwear",
+      "category": "Clothing",
+      "price": 749,
+      "color": "Orange",
+      "quantity": 1,
+      "stock": 13,
+      "size": ["S", "M", "L"],
+      "description": "Chunky knit cable sweater for a warm winter.",
+      "image": "product-images/17.webp",
+      "newAdded": false
     }
   ]
 }

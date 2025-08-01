@@ -37,7 +37,6 @@ export default function ProductSection({ products }: ProductSectionType) {
   };
 
   useEffect(() => {
-    console.log("current showing item" + showingProductItems);
     const totalPageNum = Math.ceil(
       showingProductItems.length / productsPerPage
     );
@@ -80,7 +79,6 @@ export default function ProductSection({ products }: ProductSectionType) {
       (product) => product.color === color
     );
     setShowingProductItems(filteredProducts);
-    console.log("color filter triggered");
   };
 
   return (
@@ -114,7 +112,11 @@ export default function ProductSection({ products }: ProductSectionType) {
 
       {/* Right Filter Area */}
       <div className="right w-[30%] md:block hidden p-8">
-        <Filter colorFilter={colorFilter} categoryFilter={categoryFilter} />
+        <Filter
+          colorFilter={colorFilter}
+          categoryFilter={categoryFilter}
+          products={products}
+        />
       </div>
     </div>
   );
