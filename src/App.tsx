@@ -20,10 +20,10 @@ export default function App() {
     <>
       <Router>
         <AuthProvider>
-          <Navbar />
-          {/* <ProductShowTest /> */}
-          {/* {<ProductList />} */}
           <Provider store={store}>
+            <Navbar />
+            {/* <ProductShowTest /> */}
+            {/* {<ProductList />} */}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />

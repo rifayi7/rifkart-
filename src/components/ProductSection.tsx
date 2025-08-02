@@ -1,7 +1,9 @@
 import Filter from "../pages/Filter";
 import ProductCard from "../components/ProductCrd";
-import type { ProductType } from "../redux/slice/productSlice";
+import { addProduct, type ProductType } from "../redux/slice/productSlice";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../redux/store/store";
 
 type ProductSectionType = {
   products: ProductType[];
@@ -14,6 +16,14 @@ export default function ProductSection({ products }: ProductSectionType) {
   const [itemFiltered, setItemFiltered] = useState<ProductType[]>([]);
   const [pagenUm, setPageNum] = useState<number>(0);
 
+  useEffect(() => {
+    const totalPageNum = Math.ceil(
+      showingProductItems.length / productsPerPage
+    );
+    setPageNum(totalPageNum);
+    const sliced = showingProductItems.slice(0, productsPerPage);
+    setDisplayItems(sliced);
+  }, [showingProductItems]);
   const productsPerPage = 9;
 
   const handlePageChange = (value: number) => {
@@ -35,15 +45,6 @@ export default function ProductSection({ products }: ProductSectionType) {
       setDisplayItems(sliced);
     }
   };
-
-  useEffect(() => {
-    const totalPageNum = Math.ceil(
-      showingProductItems.length / productsPerPage
-    );
-    setPageNum(totalPageNum);
-    const sliced = showingProductItems.slice(0, productsPerPage);
-    setDisplayItems(sliced);
-  }, [showingProductItems]);
 
   //price filter
   const priceFilter = (price: number) => {
@@ -88,44 +89,77 @@ export default function ProductSection({ products }: ProductSectionType) {
     setShowingProductItems(filteredProducts);
   };
 
-  return (
-    <div className="flex w-full">
-      {/* Left Product Area */}
-      <div className="left w-full md:max-w-[70%] bg-white m-[.5%] flex flex-col justify-between">
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 ">
-          {displayItems &&
-            Array.from(displayItems, (products, index) => (
-              <ProductCard key={products.id || index} product={products} />
-            ))}
-        </div>
-        <div className="flex justify-center items-center gap-6 h-[10%] ">
-          {pagenUm !== 0 ? (
-            Array.from({ length: pagenUm }, (_, i) => (
-              <button
-                key={i}
-                onClick={() => handlePageChange(i + 1)}
-                className="bg-[#FDB016] w-9 h-9 text-white rounded mx-1 cursor-pointer"
-              >
-                {i + 1}
-              </button>
-            ))
-          ) : (
-            <button className="bg-[#FDB016] w-9 h-9 text-white rounded mx-1">
-              0
-            </button>
-          )}
-        </div>
-      </div>
+  // const dispatch = useDispatch<AppDispatch>();
+  // const { items, loading, error } = useSelector(
+  //   (state: RootState) => state.products
+  // );
 
-      {/* Right Filter Area */}
-      <div className="right w-[30%] md:block hidden p-8">
-        <Filter
-          colorFilter={colorFilter}
-          categoryFilter={categoryFilter}
-          products={products}
-          priceFilter={priceFilter}
-        />
+  // const testItem = {
+  //   id: "28",
+  //   name: "sudusudy",
+  //   brand: "Rifwear",
+  //   category: "Clothing",
+  //   price: 749,
+  //   color: "Orange",
+  //   quantity: 1,
+  //   stock: 13,
+  //   size: ["S", "M", "L"],
+  //   description: "Chunky knit cable sweater for a warm winter.",
+  //   image:
+  //     "https://images.unsplash.com/photo-1429087969512-1e85aab2683d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D",
+  //   newAdded: false,
+  // };
+
+  // const handleAddProduct = () => {
+  //   dispatch(addProduct(testItem));
+  //   if (error) console.log(error);
+  // };
+
+  // useEffect(() => {
+  //   console.log(items);
+  // }, [items]);
+
+  return (
+    <>
+      {/* {error && <h1 className="text-red-600 text-6xl">{error}</h1>} */}
+      <div className="flex w-full">
+        {/* Left Product Area */}
+        <div className="left w-full md:max-w-[70%] bg-white m-[.5%] flex flex-col justify-between">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 ">
+            {displayItems &&
+              Array.from(displayItems, (products, index) => (
+                <ProductCard key={products.id || index} product={products} />
+              ))}
+          </div>
+          <div className="flex justify-center items-center gap-6 h-[10%] ">
+            {pagenUm !== 0 ? (
+              Array.from({ length: pagenUm }, (_, i) => (
+                <button
+                  key={i}
+                  onClick={() => handlePageChange(i + 1)}
+                  className="bg-[#FDB016] w-9 h-9 text-white rounded mx-1 cursor-pointer"
+                >
+                  {i + 1}
+                </button>
+              ))
+            ) : (
+              <button className="bg-[#FDB016] w-9 h-9 text-white rounded mx-1">
+                0
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Right Filter Area */}
+        <div className="right w-[30%] md:block hidden p-8">
+          <Filter
+            colorFilter={colorFilter}
+            categoryFilter={categoryFilter}
+            products={products}
+            priceFilter={priceFilter}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

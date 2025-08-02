@@ -1,11 +1,34 @@
 import { Eye, Heart, Shuffle } from "lucide-react";
 import type { ProductType } from "../redux/slice/productSlice";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState, AppDispatch } from "../redux/store/store";
+import { addToCart } from "../redux/slice/cartSlice";
+import { useEffect } from "react";
 
 type ProductCardtype = {
   product: ProductType;
 };
 
 export default function ProductCard({ product }: ProductCardtype) {
+  const { items } = useSelector((state: RootState) => state.cart);
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    console.log(items);
+  });
+
+  const handleAddCart = (products: ProductType) => {
+    const { id, name, image, quantity } = product;
+
+    const cartItem = {
+      id: Number(id),
+      name,
+      size: "M",
+      quantity,
+      image,
+    };
+
+    dispatch(addToCart(cartItem));
+  };
   return (
     <div className="h-[390px] rounded-2xl border-3 border-[#f3f4f6]">
       <div className="h-[85%] relative z-1">
@@ -41,9 +64,17 @@ export default function ProductCard({ product }: ProductCardtype) {
       </div>
       <div className="h-[15%] text-gray-600 font-semibold flex items-center text-center border-t border-neutral-100 divide-x divide-neutral-100">
         <span className="w-[50%]">$ {product.price.toFixed(2)}</span>
-        <span className="w-[50%] cursor-pointer hover:text-amber-400">
-          Add to cart
-        </span>
+        <button
+          onClick={() => handleAddCart(product)}
+          className={`w-[50%] ${
+            product.quantity > 0
+              ? "cursor-pointer hover:text-amber-400"
+              : "text-gray-400"
+          } `}
+          disabled={product.quantity === 0}
+        >
+          {product.quantity === 0 ? "Out of Stock" : "Add to Cart"}
+        </button>
       </div>
     </div>
   );

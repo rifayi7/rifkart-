@@ -1,8 +1,15 @@
-import { User, Shuffle, Heart, ShoppingBag, LogOut } from "lucide-react";
+import { User, Shuffle, Heart, LogOut } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../context/ProtectPage";
+import { Handbag } from "lucide-react";
+import { useSelector } from "react-redux";
+import type { RootState } from "../redux/store/store";
+import { useEffect } from "react";
 
 export default function Navbar() {
+  const { items } = useSelector((state: RootState) => state.cart);
+
+  useEffect(() => {}, [items]);
   const { isAuth, logout } = useAuth();
   return (
     <nav className="flex justify-between items-center">
@@ -57,13 +64,18 @@ export default function Navbar() {
             WISHLIST
           </a>
         </li>
-        <li className="hover:text-amber-300">
+        <li className="hover:text-amber-300 relative">
           <Link to="cart" className="inline-flex gap-2">
             <span>
-              <ShoppingBag />
+              <Handbag />
             </span>
             $0.00
           </Link>
+          {items.length > 0 && (
+            <span className="absolute inset-0 w-3 h-3 text-[10px] text-center bg-red-500 rounded-full">
+              {items.length}
+            </span>
+          )}
         </li>
       </ul>
     </nav>

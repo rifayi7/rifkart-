@@ -35,7 +35,7 @@
       "category": "Clothing",
       "price": 749,
       "color": "Green",
-      "quantity": 1,
+      "quantity": 0,
       "stock": 18,
       "size": ["S", "M", "L"],
       "description": "Cute green dress with floral print for girls.",
@@ -292,6 +292,48 @@
       "size": ["S", "M", "L"],
       "description": "Chunky knit cable sweater for a warm winter.",
       "image": "product-images/17.webp",
+      "newAdded": false
+    },
+    {
+      "id": "24",
+      "name": "gkgkg",
+      "brand": "Rifwear",
+      "category": "Clothing",
+      "price": 749,
+      "color": "Orange",
+      "quantity": 1,
+      "stock": 13,
+      "size": ["S", "M", "L"],
+      "description": "Chunky knit cable sweater for a warm winter.",
+      "image": "https://images.unsplash.com/photo-1429087969512-1e85aab2683d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D",
+      "newAdded": false
+    },
+    {
+      "id": "24",
+      "name": "gkgkg",
+      "brand": "Rifwear",
+      "category": "Clothing",
+      "price": 749,
+      "color": "Orange",
+      "quantity": 1,
+      "stock": 13,
+      "size": ["S", "M", "L"],
+      "description": "Chunky knit cable sweater for a warm winter.",
+      "image": "https://images.unsplash.com/photo-1429087969512-1e85aab2683d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D",
+      "newAdded": false
+    },
+    {
+      "id": "28",
+      "name": "sudusudy",
+      "brand": "Rifwear",
+      "category": "Clothing",
+      "price": 749,
+      "color": "Orange",
+      "quantity": 1,
+      "stock": 13,
+      "size": ["S", "M", "L"],
+      "description": "Chunky knit cable sweater for a warm winter.",
+      "image": "https://images.unsplash.com/photo-1429087969512-1e85aab2683d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D",
       "newAdded": false
     }
   ]
