@@ -4,31 +4,36 @@ import { useDispatch, useSelector } from "react-redux";
 import type { RootState, AppDispatch } from "../redux/store/store";
 import { addToCart } from "../redux/slice/cartSlice";
 import { useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 type ProductCardtype = {
   product: ProductType;
 };
 
 export default function ProductCard({ product }: ProductCardtype) {
-  const { items } = useSelector((state: RootState) => state.cart);
+  const { items: cartItems } = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch<AppDispatch>();
-  useEffect(() => {
-    console.log(items);
-  });
+  const navigate = useNavigate();
+  const alreadyIn = cartItems.some((p) => p.id === product.id);
 
   const handleAddCart = (products: ProductType) => {
-    const { id, name, image, quantity } = product;
+    if (!alreadyIn) {
+      const { id, name, image, quantity, price } = product;
+      const cartItem = {
+        id: id,
+        name,
+        size: "M",
+        quantity,
+        image,
+        price,
+      };
 
-    const cartItem = {
-      id: Number(id),
-      name,
-      size: "M",
-      quantity,
-      image,
-    };
-
-    dispatch(addToCart(cartItem));
+      dispatch(addToCart(cartItem));
+    } else {
+      navigate("/cart");
+    }
   };
+
   return (
     <div className="h-[390px] rounded-2xl border-3 border-[#f3f4f6]">
       <div className="h-[85%] relative z-1">
@@ -73,7 +78,11 @@ export default function ProductCard({ product }: ProductCardtype) {
           } `}
           disabled={product.quantity === 0}
         >
-          {product.quantity === 0 ? "Out of Stock" : "Add to Cart"}
+          {alreadyIn
+            ? "Go to cart"
+            : product.quantity === 0
+            ? "Out of Stock"
+            : "Add to Cart"}
         </button>
       </div>
     </div>
