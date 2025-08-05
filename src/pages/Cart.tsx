@@ -8,13 +8,20 @@ import {
   type cartType,
 } from "../redux/slice/cartSlice";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import CartTotalPrice from "../components/utils/CartTotalPrice";
 
 export default function Cart() {
   const { items } = useSelector((state: RootState) => state.cart);
+  const navigate = useNavigate();
   const [confirmation, setConfirmation] = useState<boolean>(false);
   const [itemtoremove, setItemtoremove] = useState<cartType | null>(null);
 
   const dispatch = useDispatch<AppDispatch>();
+
+  const navigateAddressPage = () => {
+    navigate("/address");
+  };
 
   const handleCartReduction = (product: cartType) => {
     dispatch(quantityReduceCart(product));
@@ -40,18 +47,15 @@ export default function Cart() {
     setConfirmation(false);
   };
 
-  const cartPriceTotal = items.reduce((acc, cur) => {
-    const total = acc + cur.price * cur.quantity;
-    return total;
-  }, 0);
+  const cartPriceTotal = CartTotalPrice(items);
 
   useEffect(() => {}, [items]);
 
   return (
-    <div className="relative min-h-screen z-5">
+    <div className="relative  z-5">
       {confirmation && (
         <>
-          <div className="fixed inset-0 z-10 backdrop-blur-[2px] bg-gray-400/10" />
+          <div className="fixed  max-h-screen inset-0 z-10 backdrop-blur-[2px] bg-gray-400/10 flex " />
           <div className="flex flex-col justify-between p-10 absolute inset-0 w-[50%] mx-auto my-auto h-[300px] rounded-[10px] bg-white border-4 border-neutral-300 z-[11]">
             <h1 className="text-2xl mt-7">Are you sure to delete the item?</h1>
             <div className="flex justify-end gap-5">
@@ -195,7 +199,10 @@ export default function Cart() {
               ></div>
             </div>
 
-            <button className="w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 rounded-lg">
+            <button
+              onClick={() => navigateAddressPage()}
+              className="w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 rounded-lg hover:cursor-pointer"
+            >
               Proceed to checkout
             </button>
           </div>
