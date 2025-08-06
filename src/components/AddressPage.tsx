@@ -287,7 +287,10 @@ export default function AddressPage() {
                       type="radio"
                       className="w-5 h-5"
                       checked={index === isChecked}
-                      onChange={() => setIsChecked(index)}
+                      onChange={() => {
+                        setIsChecked(index);
+                        setAddressExpand(false);
+                      }}
                       id={`address${index}`}
                       name="selectedAddress"
                     />

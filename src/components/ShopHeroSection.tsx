@@ -21,7 +21,7 @@ export default function ShopHeroSection() {
         <img
           src={img1}
           alt="shop-image"
-          className="rounded-2xl w-full h-full object-cover scale-100  group-hover:scale-110 z-1"
+          className="rounded-2xl w-full h-full object-cover scale-100  group-hover:scale-110 transition-transform duration-300 z-1"
         />
       </div>
       <div className="w-[25%] h-full overflow-hidden rounded-2xl relative group">
@@ -39,7 +39,7 @@ export default function ShopHeroSection() {
         <img
           src={img2}
           alt="shop-image-2"
-          className="rounded-2xl w-full h-full object-cover group-hover:scale-110 z-1"
+          className="rounded-2xl w-full h-full object-cover group-hover:scale-110 z-1 transition-transform duration-300"
         />
       </div>
       <div className="w-[45%] h-full overflow-hidden rounded-2xl relative group">
@@ -57,7 +57,7 @@ export default function ShopHeroSection() {
         <img
           src={img3}
           alt="shop-image-2"
-          className="rounded-2xl w-full h-full object-cover group-hover:scale-110 z-1"
+          className="rounded-2xl w-full h-full object-cover group-hover:scale-110 z-1 transition-transform duration-300"
         />
       </div>
     </div>

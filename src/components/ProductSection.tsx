@@ -123,7 +123,7 @@ export default function ProductSection({ products }: ProductSectionType) {
     <>
       {/* {error && <h1 className="text-red-600 text-6xl">{error}</h1>} */}
       <div className="flex w-full">
-        {/* Left Product Area */}
+        {/* left filter */}
         <div className="left w-full md:max-w-[70%] bg-white m-[.5%] flex flex-col justify-between">
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 ">
             {displayItems &&
@@ -150,7 +150,7 @@ export default function ProductSection({ products }: ProductSectionType) {
           </div>
         </div>
 
-        {/* Right Filter Area */}
+        {/* right filter  */}
         <div className="right w-[30%] md:block hidden p-8">
           <Filter
             colorFilter={colorFilter}

@@ -51,11 +51,11 @@ export default function ProductCard({ product }: ProductCardtype) {
             className="rounded-full bg-gray-100 p-[5px] cursor-pointer hover:bg-amber-300 hover:text-white"
           />
         </div>
-        <div className="h-[70%] w-full group">
+        <div className="h-[70%] w-full group ">
           <img
             src={product.image}
             alt={product.name}
-            className="scale-100 group-hover:scale-115 transition-transform duration-300"
+            className="scale-100 group-hover:scale-115 transition-transform duration-300 group-hover:cursor-pointer"
           />
         </div>
         <div className="flex flex-col items-center h-[30%] justify-center">

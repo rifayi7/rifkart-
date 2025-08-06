@@ -11,7 +11,7 @@
       "stock": 20,
       "size": ["S", "M", "L"],
       "description": "Colorful striped cotton t-shirt for kids.",
-      "image": "product-images/1.webp",
+      "image": "/product-images/1.webp",
       "newAdded": true
     },
     {
@@ -25,7 +25,7 @@
       "stock": 15,
       "size": ["S", "M", "L"],
       "description": "Vibrant floral dress perfect for parties.",
-      "image": "product-images/2.webp",
+      "image": "/product-images/2.webp",
       "newAdded": true
     },
     {
@@ -39,7 +39,7 @@
       "stock": 18,
       "size": ["S", "M", "L"],
       "description": "Cute green dress with floral print for girls.",
-      "image": "product-images/3.webp",
+      "image": "/product-images/3.webp",
       "newAdded": true
     },
     {
@@ -53,7 +53,7 @@
       "stock": 12,
       "size": ["S", "M", "L"],
       "description": "Light blue dress with daisy prints for everyday wear.",
-      "image": "product-images/4.webp",
+      "image": "/product-images/4.webp",
       "newAdded": false
     },
     {
@@ -67,7 +67,7 @@
       "stock": 30,
       "size": ["Free"],
       "description": "Warm and soft woolen scarf for kids.",
-      "image": "product-images/5.webp",
+      "image": "/product-images/5.webp",
       "newAdded": false
     },
     {
@@ -81,7 +81,7 @@
       "stock": 25,
       "size": ["Standard"],
       "description": "Fun racing car toy with character driver.",
-      "image": "product-images/6.webp",
+      "image": "/product-images/6.webp",
       "newAdded": true
     },
     {
@@ -95,7 +95,7 @@
       "stock": 20,
       "size": ["Medium"],
       "description": "Soft teddy bear dressed in cute dungarees.",
-      "image": "product-images/7.webp",
+      "image": "/product-images/7.webp",
       "newAdded": true
     },
     {
@@ -109,7 +109,7 @@
       "stock": 15,
       "size": ["Standard"],
       "description": "Classic wooden horse on wheels for toddlers.",
-      "image": "product-images/8.webp",
+      "image": "/product-images/8.webp",
       "newAdded": false
     },
     {
@@ -123,7 +123,7 @@
       "stock": 30,
       "size": ["Standard"],
       "description": "Character-driven toy car with helmet design.",
-      "image": "product-images/9.webp",
+      "image": "/product-images/9.webp",
       "newAdded": true
     },
     {
@@ -137,7 +137,7 @@
       "stock": 22,
       "size": ["Medium"],
       "description": "Handmade crochet teddy bear with adorable features.",
-      "image": "product-images/10.webp",
+      "image": "/product-images/10.webp",
       "newAdded": false
     },
     {
@@ -151,7 +151,7 @@
       "stock": 50,
       "size": ["S", "M"],
       "description": "Soft wool socks to keep tiny feet warm.",
-      "image": "product-images/11.webp",
+      "image": "/product-images/11.webp",
       "newAdded": true
     },
     {
@@ -165,7 +165,7 @@
       "stock": 10,
       "size": ["S", "M", "L"],
       "description": "Elegant pink dress for special occasions.",
-      "image": "product-images/12.webp",
+      "image": "/product-images/12.webp",
       "newAdded": true
     },
     {
@@ -179,7 +179,7 @@
       "stock": 16,
       "size": ["S", "M", "L"],
       "description": "Cozy knit sweater in purple for chilly days.",
-      "image": "product-images/13.webp",
+      "image": "/product-images/13.webp",
       "newAdded": false
     },
     {
@@ -193,7 +193,7 @@
       "stock": 20,
       "size": ["6", "7", "8"],
       "description": "Comfortable kids' shoes with velcro straps.",
-      "image": "product-images/14.webp",
+      "image": "/product-images/14.webp",
       "newAdded": false
     },
     {
@@ -207,7 +207,7 @@
       "stock": 14,
       "size": ["S", "M", "L"],
       "description": "Soft pastel blue winter sweater.",
-      "image": "product-images/15.webp",
+      "image": "/product-images/15.webp",
       "newAdded": true
     },
     {
@@ -221,7 +221,7 @@
       "stock": 17,
       "size": ["Free"],
       "description": "Stylish and warm checkered scarf for kids.",
-      "image": "product-images/16.webp",
+      "image": "/product-images/16.webp",
       "newAdded": false
     },
     {
@@ -235,105 +235,7 @@
       "stock": 13,
       "size": ["S", "M", "L"],
       "description": "Chunky knit cable sweater for a warm winter.",
-      "image": "product-images/17.webp",
-      "newAdded": false
-    },
-    {
-      "id": 18,
-      "name": "18Orange Cable Sweater",
-      "brand": "Rifwear",
-      "category": "Clothing",
-      "price": 749,
-      "color": "Orange",
-      "quantity": 1,
-      "stock": 13,
-      "size": ["S", "M", "L"],
-      "description": "Chunky knit cable sweater for a warm winter.",
-      "image": "product-images/17.webp",
-      "newAdded": false
-    },
-    {
-      "id": 19,
-      "name": "19Orange Cable Sweater",
-      "brand": "Rifwear",
-      "category": "Clothing",
-      "price": 749,
-      "color": "Orange",
-      "quantity": 1,
-      "stock": 13,
-      "size": ["S", "M", "L"],
-      "description": "Chunky knit cable sweater for a warm winter.",
-      "image": "product-images/17.webp",
-      "newAdded": false
-    },
-    {
-      "id": 20,
-      "name": "20Orange Cable Sweater",
-      "brand": "Rifwear",
-      "category": "Clothing",
-      "price": 749,
-      "color": "Orange",
-      "quantity": 1,
-      "stock": 13,
-      "size": ["S", "M", "L"],
-      "description": "Chunky knit cable sweater for a warm winter.",
-      "image": "product-images/17.webp",
-      "newAdded": false
-    },
-    {
-      "id": 21,
-      "name": "21Orange Cable Sweater",
-      "brand": "Rifwear",
-      "category": "Clothing",
-      "price": 749,
-      "color": "Orange",
-      "quantity": 1,
-      "stock": 13,
-      "size": ["S", "M", "L"],
-      "description": "Chunky knit cable sweater for a warm winter.",
-      "image": "product-images/17.webp",
-      "newAdded": false
-    },
-    {
-      "id": "24",
-      "name": "gkgkg",
-      "brand": "Rifwear",
-      "category": "Clothing",
-      "price": 749,
-      "color": "Orange",
-      "quantity": 1,
-      "stock": 13,
-      "size": ["S", "M", "L"],
-      "description": "Chunky knit cable sweater for a warm winter.",
-      "image": "https://images.unsplash.com/photo-1429087969512-1e85aab2683d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D",
-      "newAdded": false
-    },
-    {
-      "id": "24",
-      "name": "gkgkg",
-      "brand": "Rifwear",
-      "category": "Clothing",
-      "price": 749,
-      "color": "Orange",
-      "quantity": 1,
-      "stock": 13,
-      "size": ["S", "M", "L"],
-      "description": "Chunky knit cable sweater for a warm winter.",
-      "image": "https://images.unsplash.com/photo-1429087969512-1e85aab2683d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D",
-      "newAdded": false
-    },
-    {
-      "id": "28",
-      "name": "sudusudy",
-      "brand": "Rifwear",
-      "category": "Clothing",
-      "price": 749,
-      "color": "Orange",
-      "quantity": 1,
-      "stock": 13,
-      "size": ["S", "M", "L"],
-      "description": "Chunky knit cable sweater for a warm winter.",
-      "image": "https://images.unsplash.com/photo-1429087969512-1e85aab2683d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D",
+      "image": "/product-images/17.webp",
       "newAdded": false
     }
   ]

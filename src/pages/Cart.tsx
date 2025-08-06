@@ -135,7 +135,11 @@ export default function Cart() {
                           >
                             <ChevronDown
                               size={20}
-                              className="text-white hover:text-black bg-tiddy-black"
+                              className={`text-white hover:text-black bg-tiddy-black ${
+                                item.quantity === 1
+                                  ? "opacity-50 hover:text-white"
+                                  : "opacity-100"
+                              }`}
                             />
                           </button>
                         </div>

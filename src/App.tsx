@@ -14,6 +14,7 @@ import ProductShowTest from "./components/ProductShowTest";
 import { Provider } from "react-redux";
 import { store } from "./redux/store/store";
 import ProductList from "./components/ProductList";
+import ProductDetails from "./components/ProductDetails";
 
 export default function App() {
   return (
@@ -21,7 +22,7 @@ export default function App() {
       <Router>
         <AuthProvider>
           <Provider store={store}>
-            <Navbar />
+            {/* <Navbar /> */}
             {/* <ProductShowTest /> */}
             {/* {<ProductList />} */}
             <Routes>
@@ -32,6 +33,7 @@ export default function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/address" element={<AddressPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/product/:id" element={<ProductDetails />} />
             </Routes>
           </Provider>
         </AuthProvider>

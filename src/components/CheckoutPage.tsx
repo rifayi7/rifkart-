@@ -1,4 +1,15 @@
+import { useSelector } from "react-redux";
+import type { RootState } from "../redux/store/store";
+import CartTotalPrice from "./utils/CartTotalPrice";
+
 export default function CheckoutPage() {
+  const { items: addreslList } = useSelector(
+    (state: RootState) => state.address
+  );
+  const { items: cartList } = useSelector((state: RootState) => state.cart);
+  const cartTotalPrice = CartTotalPrice(cartList);
+
+  console.log(cartTotalPrice);
   return (
     <div className="">
       <h1 className="font-bold text-4xl mb-6">Checkout</h1>
@@ -9,13 +20,22 @@ export default function CheckoutPage() {
           {/* Address Preview */}
           <div className="border border-[#e6eaec] p-6 rounded-md">
             <h2 className="text-lg font-semibold mb-4">Shipping Address</h2>
-            <div className="text-gray-700 space-y-1 leading-6">
-              <p className="font-medium">John Doe</p>
-              <p>123 Main Street</p>
-              <p>New York, NY 10001</p>
-              <p>Phone: +1 234 567 890</p>
-              <p>Email: john@example.com</p>
-            </div>
+            {addreslList.map((address) => {
+              return (
+                <div
+                  key={address.id}
+                  className="text-gray-700 space-y-1 leading-6"
+                >
+                  <p className="font-medium">
+                    {address.fname} {address.lname}
+                  </p>
+                  <p>{address.addressline}</p>
+                  <p>{address.city}</p>
+                  <p>Phone: +91 {address.phone}</p>
+                  <p>Email: {address.email}</p>
+                </div>
+              );
+            })}
           </div>
 
           {/* Cart Preview */}
@@ -23,36 +43,26 @@ export default function CheckoutPage() {
             <h2 className="text-lg font-semibold mb-4">Order Items</h2>
             <div className="space-y-4">
               {/* Item 1 */}
-              <div className="flex items-center gap-4">
-                <img
-                  // src={require("../assets/Kid Dresses/Teddy-2.webp")}
-                  alt="Teddy"
-                  className="w-20 h-20 object-cover rounded"
-                />
-                <div className="flex flex-col w-full">
-                  <div className="flex justify-between font-medium">
-                    <span>Teddy Dress</span>
-                    <span>$100</span>
+              {cartList.map((item) => {
+                return (
+                  <div key={item.id} className="flex items-center gap-4 ">
+                    <img
+                      src={item.image}
+                      alt="Teddy"
+                      className="w-20 h-20 object-cover rounded"
+                    />
+                    <div className="flex flex-col w-full">
+                      <div className="flex justify-between font-medium">
+                        <span>{item.name}</span>
+                        <span>${item.price}</span>
+                      </div>
+                      <span className="text-sm text-gray-500">
+                        Qty: {item.quantity}
+                      </span>
+                    </div>
                   </div>
-                  <span className="text-sm text-gray-500">Qty: 1</span>
-                </div>
-              </div>
-
-              {/* Item 2 (duplicate for demo) */}
-              <div className="flex items-center gap-4">
-                <img
-                  // src={require("../assets/Kid Dresses/Teddy-2.webp")}
-                  alt="Teddy"
-                  className="w-20 h-20 object-cover rounded"
-                />
-                <div className="flex flex-col w-full">
-                  <div className="flex justify-between font-medium">
-                    <span>Teddy Dress</span>
-                    <span>$100</span>
-                  </div>
-                  <span className="text-sm text-gray-500">Qty: 1</span>
-                </div>
-              </div>
+                );
+              })}
             </div>
           </div>
 
@@ -90,11 +100,11 @@ export default function CheckoutPage() {
             <div className="space-y-3 mb-4">
               <div className="flex justify-between text-gray-700">
                 <span>Subtotal</span>
-                <span>$200.00</span>
+                <span>${cartTotalPrice}</span>
               </div>
               <div className="flex justify-between text-gray-700">
                 <span>Shipping</span>
-                <span>$10.00</span>
+                <span>${cartTotalPrice >= 5000 ? 0 : 10.0}</span>
               </div>
               <div className="flex justify-between text-gray-700">
                 <span>Tax</span>
@@ -106,7 +116,7 @@ export default function CheckoutPage() {
 
             <div className="flex justify-between text-gray-900 font-bold text-lg mb-4">
               <span>Total</span>
-              <span>$215.00</span>
+              <span>${cartTotalPrice + 5}.00</span>
             </div>
 
             <p className="text-sm text-gray-500">
