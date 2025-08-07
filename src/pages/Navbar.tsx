@@ -17,12 +17,9 @@ import { useSelector } from "react-redux";
 import type { RootState } from "../redux/store/store";
 import { useEffect, useState } from "react";
 import logo from "../assets/Logo.svg";
-import CartTotalPrice from "../components/utils/CartTotalPrice";
 
 export default function Navbar() {
   const { items } = useSelector((state: RootState) => state.cart);
-
-  const cartTotalPrice = CartTotalPrice(items);
   const [menuOpen, setMenuOpen] = useState(false);
   const { isAuth, logout } = useAuth();
 
@@ -75,7 +72,7 @@ export default function Navbar() {
       className={`flex py-10 justify-between items-center text-[10px] lg:text-[12px] 
      text-tiddy-gray min-h-15 relative ${menuOpen && "overflow-hidden"}`}
     >
-      <div className="  ml-1 flex items-center ">
+      <div className="  ml-1 flex items-center cursor-pointer">
         <img src={logo} className="w-7 h-10 fill-amber-300" />
         <h1 className="text-tiddy-black">Tiddy</h1>
       </div>

@@ -1,10 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
-import type { FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { useAuth } from "../context/ProtectPage";
 
 export default function Login() {
   const navigate = useNavigate();
   const { login } = useAuth();
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -14,12 +15,19 @@ export default function Login() {
     if (name === "admin" && password === "admin") {
       login();
       navigate("/");
+    } else {
+      setErrorMessage("Invalid credentials");
     }
   };
   return (
     <div className="w-full min-h-screen flex items-center justify-center bg-gray-50">
       <div className="bg-white w-full sm:w-[90%] md:w-[70%] lg:w-[50%] xl:w-[40%] p-10 rounded-2xl shadow-md border border-neutral-200">
         <div className="mb-8">
+          {errorMessage !== null && (
+            <p className="text-red-500 text-[20px] text-center">
+              {errorMessage}
+            </p>
+          )}
           <p className="text-tiddy-gray text-lg mb-1">
             Please enter your details
           </p>

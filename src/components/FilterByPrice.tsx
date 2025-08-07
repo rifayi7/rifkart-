@@ -36,10 +36,10 @@ export default function FilterByPrice({ priceFilter }: any) {
         />
       </div>
 
-      <p className="text-gray-600 font-medium text-sm">
-        Price: <span className="text-black font-bold">$0</span> -
+      {/* <p className="text-gray-600 font-medium text-sm">
+        Price: <span className="text-black font-bold">$100</span> -
         <span className="text-black font-bold">$1000</span>
-      </p>
+      </p> */}
     </div>
   );
 }
