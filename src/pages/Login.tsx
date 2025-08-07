@@ -1,16 +1,21 @@
-import { Link } from "react-router-dom";
-import { useAuth } from "../context/ProtectPage";
+import { Link, useNavigate } from "react-router-dom";
 import type { FormEvent } from "react";
+import { useAuth } from "../context/ProtectPage";
 
 export default function Login() {
-  // const { login } = useAuth();
-  // const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   const formData = new FormData(e.currentTarget);
-  //   const name = formData.get("name") as string;
-  //   const password = formData.get("password") as string;
-  //   login(name, password);
-  // };
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const password = formData.get("password") as string;
+    if (name === "admin" && password === "admin") {
+      login();
+      navigate("/");
+    }
+  };
   return (
     <div className="w-full min-h-screen flex items-center justify-center bg-gray-50">
       <div className="bg-white w-full sm:w-[90%] md:w-[70%] lg:w-[50%] xl:w-[40%] p-10 rounded-2xl shadow-md border border-neutral-200">
@@ -21,10 +26,7 @@ export default function Login() {
           <h1 className="text-4xl font-bold text-gray-800">Welcome Back</h1>
         </div>
 
-        <form
-          //  onSubmit={handleSubmit}
-          className="flex flex-col gap-5"
-        >
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           <input
             className="rounded-md border border-neutral-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
             type="name"
@@ -45,7 +47,7 @@ export default function Login() {
           </button>
         </form>
 
-        {/* 👇 Signup link */}
+        {/*  Signup  */}
         <p className="text-sm text-center text-gray-600 mt-6">
           Don’t have an account?{" "}
           <Link

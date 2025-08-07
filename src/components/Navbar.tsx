@@ -24,6 +24,8 @@ export default function Navbar() {
 
   const cartTotalPrice = CartTotalPrice(items);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { isAuth, logout } = useAuth();
+
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
@@ -34,6 +36,8 @@ export default function Navbar() {
       document.body.style.overflow = "auto";
     };
   }, [menuOpen]);
+
+  console.log(isAuth);
 
   const links = [
     { name: "HOME", path: "/" },
@@ -66,10 +70,9 @@ export default function Navbar() {
     },
   ];
 
-  const { isAuth, logout } = useAuth();
   return (
     <nav
-      className={`flex  justify-between items-center text-[10px] lg:text-[12px] 
+      className={`flex py-10 justify-between items-center text-[10px] lg:text-[12px] 
      text-tiddy-gray min-h-15 relative ${menuOpen && "overflow-hidden"}`}
     >
       <div className="  ml-1 flex items-center ">
