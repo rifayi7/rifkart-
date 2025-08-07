@@ -4,7 +4,6 @@ import "./App.css";
 import Navbar from "./pages/Navbar";
 import Login from "./pages/Login";
 import Shop from "./pages/Shop";
-import Cart from "./pages/Cart";
 import Signup from "./components/Signup";
 import AddressPage from "./components/AddressPage";
 import CheckoutPage from "./components/CheckoutPage";
@@ -12,8 +11,9 @@ import { AuthProvider } from "./context/ProtectPage";
 import { Provider } from "react-redux";
 import { store } from "./redux/store/store";
 import ProductDetails from "./components/ProductDetails";
-import PageNotFound from "./components/pageNotFound";
-import PrivateRoute from "./components/PrivateRoutes";
+import PageNotFound from "./components/PageNotFound";
+import PrivateRoute from "./routes/PrivateRoutes";
+import Cart from "./pages/Cart";
 
 export default function App() {
   return (
