@@ -1,7 +1,7 @@
 import { CreditCard, Truck, MessagesSquare, Gift } from "lucide-react";
 export default function BlackContainer() {
   return (
-    <div className="bg-tiddy-black min-h-[180px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-10">
+    <div className="bg-tiddy-black rounded-[8px] gap-3 min-h-[180px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  p-10">
       <div className="flex items-start gap-4">
         <CreditCard color="white" size={40} className="flex-shrink-0" />
         <div className="text-white">

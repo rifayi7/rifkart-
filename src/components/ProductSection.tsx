@@ -16,6 +16,7 @@ export default function ProductSection({ products }: ProductSectionType) {
   const [itemFiltered, setItemFiltered] = useState<ProductType[]>([]);
   const [pagenUm, setPageNum] = useState<number>(0);
 
+  let productsPerPage = 12;
   useEffect(() => {
     const totalPageNum = Math.ceil(
       showingProductItems.length / productsPerPage
@@ -24,7 +25,6 @@ export default function ProductSection({ products }: ProductSectionType) {
     const sliced = showingProductItems.slice(0, productsPerPage);
     setDisplayItems(sliced);
   }, [showingProductItems]);
-  const productsPerPage = 9;
 
   const handlePageChange = (value: number) => {
     // 0 9    1
@@ -122,16 +122,16 @@ export default function ProductSection({ products }: ProductSectionType) {
   return (
     <>
       {/* {error && <h1 className="text-red-600 text-6xl">{error}</h1>} */}
-      <div className="flex w-full">
+      <div className="flex w-full ">
         {/* left filter */}
-        <div className="left w-full md:max-w-[70%] bg-white m-[.5%] flex flex-col justify-between">
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 ">
+        <div className="left w-full md:max-w-[65%]  m-[.5%] flex flex-col justify-between ">
+          <div className="grid  pcrd:grid-cols-2 xl:grid-cols-3 gap-8 ">
             {displayItems &&
               Array.from(displayItems, (products, index) => (
                 <ProductCard key={products.id || index} product={products} />
               ))}
           </div>
-          <div className="flex justify-center items-center gap-6 h-[10%] ">
+          <div className="flex justify-center items-center gap-6 min-h-30 mt-auto ">
             {pagenUm !== 0 ? (
               Array.from({ length: pagenUm }, (_, i) => (
                 <button
@@ -151,7 +151,7 @@ export default function ProductSection({ products }: ProductSectionType) {
         </div>
 
         {/* right filter  */}
-        <div className="right w-[30%] md:block hidden p-8">
+        <div className="right w-[35%] md:block hidden p-8 pr-0 ">
           <Filter
             colorFilter={colorFilter}
             categoryFilter={categoryFilter}

@@ -49,8 +49,6 @@ export default function Cart() {
 
   const cartPriceTotal = CartTotalPrice(items);
 
-  useEffect(() => {}, [items]);
-
   return (
     <div className="relative  z-5">
       {confirmation && (
@@ -104,16 +102,16 @@ export default function Cart() {
                         alt="product"
                         className="w-24 h-24 object-cover rounded"
                       />
-                      <div>
+                      <div className="hidden sm:block">
                         <span className="font-medium block">{item.name}</span>
-                        <span className="text-ticky-gray text-sm block">
-                          {item.price}
+                        <span className="text-ticky-gray text-sm block line-through">
+                          {item.price + 100}
                         </span>
                       </div>
                     </td>
                     <td className="p-4">${item.price * item.quantity}</td>
                     <td className="p-4">
-                      <div className="flex items-center border rounded-[10px] w-20 overflow-clip">
+                      <div className="flex items-center border rounded-[10px] w-15 sm:w-20 overflow-clip">
                         <input
                           readOnly
                           type="number"
@@ -204,8 +202,13 @@ export default function Cart() {
             </div>
 
             <button
+              disabled={items.length === 0}
               onClick={() => navigateAddressPage()}
-              className="w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 rounded-lg hover:cursor-pointer"
+              className={`w-full bg-gray-900  text-white font-semibold py-3 rounded-lg  ${
+                items.length === 0
+                  ? "bg-neutral-400"
+                  : "hover:bg-gray-800 hover:cursor-pointer"
+              }`}
             >
               Proceed to checkout
             </button>

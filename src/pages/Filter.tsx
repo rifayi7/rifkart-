@@ -11,7 +11,7 @@ export default function Filter({
   priceFilter,
 }: any) {
   return (
-    <div className="mx-[1%]">
+    <div className="mx-[1%] flex flex-col  h-full">
       <FilterByPrice priceFilter={priceFilter} />
       <FilterByColour colorFilter={colorFilter} products={products} />
       <FilterByCategory categoryFilter={categoryFilter} />

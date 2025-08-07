@@ -10,25 +10,21 @@ import Signup from "./components/Signup";
 import AddressPage from "./components/AddressPage";
 import CheckoutPage from "./components/CheckoutPage";
 import { AuthProvider } from "./context/ProtectPage";
-import ProductShowTest from "./components/ProductShowTest";
 import { Provider } from "react-redux";
 import { store } from "./redux/store/store";
-import ProductList from "./components/ProductList";
 import ProductDetails from "./components/ProductDetails";
 
 export default function App() {
   return (
-    <>
+    <div className="">
       <Router>
         <AuthProvider>
           <Provider store={store}>
-            {/* <Navbar /> */}
-            {/* <ProductShowTest /> */}
-            {/* {<ProductList />} */}
+            <Navbar />
             <Routes>
-              <Route path="/" element={<Home />} />
+              {/* <Route path="/" element={<Home />} /> */}
               <Route path="/login" element={<Login />} />
-              <Route path="/shop" element={<Shop />} />
+              <Route path="/" element={<Shop />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/address" element={<AddressPage />} />
@@ -38,6 +34,6 @@ export default function App() {
           </Provider>
         </AuthProvider>
       </Router>
-    </>
+    </div>
   );
 }

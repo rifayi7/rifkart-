@@ -46,7 +46,7 @@ export default function FilterByCategory({ categoryFilter, products }: any) {
     { name: "Footwear", count: 1 },
   ];
   return (
-    <div className="flex flex-col gap-4 text-gray-700 font-light">
+    <div className="flex flex-col gap-4 text-gray-700 font-light mb-[40px]">
       <h1 className="font-bold text-black">Filter by category</h1>
       {categoryName.map((category, idx) => (
         <label

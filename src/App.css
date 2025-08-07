@@ -4,6 +4,7 @@
 @theme {
   --color-tiddy-gray: #576471;
   --color-tiddy-black: #292c2e;
+  --breakpoint-pcrd: 550px;
 }
 * {
   font-family: "Alexandria", sans-serif;
@@ -14,5 +15,6 @@ body {
   margin: 0;
   padding: 0;
   max-width: 1400px;
-  margin-inline: max(5%, calc((100vw - 1400px) / 2));
+  /* margin-inline: max(5%, calc((100vw - 1400px) / 2)); */
+  margin-inline: max(10%, calc((100vw - 1400px) / 2));
 }

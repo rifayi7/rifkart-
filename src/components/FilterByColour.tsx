@@ -68,7 +68,7 @@ export default function FilterByColour({ colorFilter, products }: any) {
   }, [products]);
 
   return (
-    <div className="flex flex-col gap-3 text-gray-600 font-light">
+    <div className="flex flex-col gap-3 text-gray-600 font-light mb-[40px]">
       <h1 className="font-bold text-black">Filter by colour</h1>
 
       {Object.keys(colorsProd).map((colorName) => (
